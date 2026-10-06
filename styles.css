@@ -37,11 +37,11 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; mar
 h1[lang="he"], h2[lang="he"], h3[lang="he"], .he-serif { font-family: "Frank Ruhl Libre", var(--serif); }
 
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.skip-link {
-  position: absolute; left: -9999px; top: 8px; z-index: 100;
+.skip-link {   /* hidden above the page; never off to the side, which widens RTL pages */
+  position: absolute; top: -100px; inset-inline-start: 8px; z-index: 100;
   background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 8px;
 }
-.skip-link:focus { left: 8px; }
+.skip-link:focus { top: 8px; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
 .container { width: min(var(--max), 100% - 40px); margin-inline: auto; }
@@ -60,6 +60,10 @@ h1[lang="he"], h2[lang="he"], h3[lang="he"], .he-serif { font-family: "Frank Ruh
 .topbar .container { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
 .brand { text-decoration: none; font-family: var(--serif); font-size: 1.05rem; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
 .brand span { font-family: "Frank Ruhl Libre", var(--serif); letter-spacing: .04em; margin-inline-start: .6em; opacity: .7; }
+@media (max-width: 480px) {
+  .brand { font-size: .92rem; letter-spacing: .08em; }
+  .brand span { display: none; }
+}
 .nav { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
 .nav a {
   display: block; padding: 6px 10px; border-radius: 999px;
